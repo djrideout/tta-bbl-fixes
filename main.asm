@@ -6,6 +6,7 @@ lorom
 !RAM_PASSWORD_1 = $7E0442
 !RAM_PASSWORD_2 = $7E0444
 !RAM_PASSWORD_3 = $7E0446
+!RAM_DIFFICULTY = $7E006C
 
 ; password table at $81F87D (each column is a password)
 ;
@@ -31,5 +32,10 @@ org $91EA5A
 nop
 nop
 nop
+nop
+nop
+
+; nop out setting the game to children difficulty if a password is used
+org $91EA80
 nop
 nop
