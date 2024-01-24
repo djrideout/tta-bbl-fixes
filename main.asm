@@ -3,10 +3,12 @@ lorom
 ; addresses
 !ROM_PASSWORD_TABLE = $81F87D
 !ROM_CHECK_PASSWORD = $91EA33
-!RAM_PASSWORD_1 = $7E0442
-!RAM_PASSWORD_2 = $7E0444
-!RAM_PASSWORD_3 = $7E0446
-!RAM_DIFFICULTY = $7E006C
+!RAM_PASSWORD_1 = $0442
+!RAM_PASSWORD_2 = $0444
+!RAM_PASSWORD_3 = $0446
+!RAM_DIFFICULTY = $6C
+!RAM_GAME_FORCED_INPUTS = $C8
+!RAM_DASH_INPUTS = $60
 
 ; password table at $81F87D (each column is a password)
 ;
@@ -39,3 +41,9 @@ nop
 org $91EA80
 nop
 nop
+
+; use mapped dash inputs when automatically dashing off the train instead of hardcoded R button
+org $81F9D7
+lda !RAM_DASH_INPUTS
+nop
+ora #$0100 ; game originally presses right as well
